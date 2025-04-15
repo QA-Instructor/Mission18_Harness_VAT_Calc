@@ -11,8 +11,8 @@ pipeline:
         build: <+input>
   stages:
     - stage:
-        name: npm stage
-        identifier: npm_stage
+        name: build docker image
+        identifier: build_docker_image
         description: ""
         type: CI
         spec:
@@ -29,9 +29,12 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: Run
-                  name: npm install
-                  identifier: npm_install
+                  type: BuildAndPushDockerRegistry
+                  name: uild_vat_calc_and_push_to_Dockerhub
+                  identifier: uild_vat_calc_and_push_to_Dockerhub
                   spec:
-                    shell: Bash
-                    command: npm install
+                    connectorRef: account.harnessImage
+                    repo: victorialloyd/harness-vat-calc
+                    tags:
+                      - <+pipeline.sequenceId>
+                    caching: true
