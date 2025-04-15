@@ -33,7 +33,7 @@ pipeline:
                   name: build_vat_calc_and_push_to_Dockerhub
                   identifier: uild_vat_calc_and_push_to_Dockerhub
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: vat_dockerhub_connector
                     repo: victorialloyd/harness-vat-calc
                     tags:
                       - <+pipeline.sequenceId>
