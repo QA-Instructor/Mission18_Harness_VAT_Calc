@@ -1,0 +1,37 @@
+pipeline:
+  name: VAT Calc Pipeline 1
+  identifier: VAT_Calc_Pipeline_1
+  projectIdentifier: Victoria_VAT_Calc
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: Mission18_GitHub_Connector
+        build: <+input>
+  stages:
+    - stage:
+        name: npm stage
+        identifier: npm_stage
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: npm install
+                  identifier: npm_install
+                  spec:
+                    shell: Bash
+                    command: npm install
