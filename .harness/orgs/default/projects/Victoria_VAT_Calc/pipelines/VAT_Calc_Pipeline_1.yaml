@@ -30,7 +30,7 @@ pipeline:
             steps:
               - step:
                   type: BuildAndPushDockerRegistry
-                  name: uild_vat_calc_and_push_to_Dockerhub
+                  name: build_vat_calc_and_push_to_Dockerhub
                   identifier: uild_vat_calc_and_push_to_Dockerhub
                   spec:
                     connectorRef: account.harnessImage
